@@ -26,5 +26,22 @@ const people = [
   }
 ];
 
-// Temporary test
-console.log("People data:", people);
+// Dom elements
+const personListElement = document.querySelector(".person-list");
+
+function renderPersonList() {
+  personListElement.innerHTML = "";
+
+  people.forEach((person) => {
+    const li = document.createElement("li");
+    li.textContent = `${person.firstName} ${person.lastName}`;
+    li.classList.add("person-item");
+
+    // click için kullanacağız
+    li.dataset.id = person.id;
+
+    personListElement.appendChild(li);
+  });
+}
+
+renderPersonList();
