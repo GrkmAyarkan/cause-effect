@@ -36,12 +36,27 @@ function renderPersonList() {
     const li = document.createElement("li");
     li.textContent = `${person.firstName} ${person.lastName}`;
     li.classList.add("person-item");
-
-    // click için kullanacağız
     li.dataset.id = person.id;
+
+    li.addEventListener("click", () => {
+      renderPersonDetails(person);
+    });
 
     personListElement.appendChild(li);
   });
 }
 
 renderPersonList();
+
+const personDetailsElement = document.querySelector(".person-details");
+
+// Detail Pane Update
+
+function renderPersonDetails(person) {
+  personDetailsElement.innerHTML = `
+    <h3>${person.firstName} ${person.lastName}</h3>
+    <p><strong>Address:</strong> ${person.address}</p>
+    <p><strong>Phone:</strong> ${person.phone}</p>
+    <p><strong>Birthday:</strong> ${person.birthday}</p>
+  `;
+}
