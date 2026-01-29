@@ -39,12 +39,22 @@ function renderPersonList() {
     li.dataset.id = person.id;
 
     li.addEventListener("click", () => {
+      // Önce tüm selected'ları temizle
+      document.querySelectorAll(".person-item").forEach((item) => {
+        item.classList.remove("selected");
+      });
+
+      // Tıklananı selected yap
+      li.classList.add("selected");
+
+      // Detayları göster
       renderPersonDetails(person);
     });
 
     personListElement.appendChild(li);
   });
 }
+
 
 renderPersonList();
 
